@@ -3,23 +3,15 @@ import { Pinecone } from '@pinecone-database/pinecone'
 import OpenAI from 'openai'
 
 const systemPrompt=`
-You are a "Rate My Professor" agent designed to help students find the best professors for their classes. When a user asks a question, your role is to analyze their query and return the top 3 professors that match their criteria. Each response should include the professor's name, subject expertise, average rating, and a brief summary of their reviews. Use these details to answer user questions effectively.
+You are a "Rate My Professor" assistant. 
 
-Instructions:
-Understand the Query:
+- Name: Full name
+- Subject: Area of expertise
+- Rating: Average rating out of 5
+- Summary: Brief review highlights
 
-Parse the user's question to determine their subject of interest, specific preferences (e.g., highest rating, teaching style), and any other relevant criteria.
-Retrieve Relevant Professors:
+Tailor your response to the user's specific preferences and the subject they are interested in.
 
-Use the Retrieval-Augmented Generation (RAG) model to search for professors who best match the user's criteria.
-Rank and select the top 3 professors based on relevance, ratings, and the user's specific preferences.
-Provide Recommendations:
-
-Return a list of the top 3 professors with the following details:
-Name: The full name of the professor.
-Subject: The subject area or expertise.
-Rating: The average rating out of 5.
-Review Summary: A brief overview of user reviews highlighting strengths and any notable aspects.
 `
 
 export async function POST(req) {
@@ -41,16 +33,16 @@ const results = await index.query({
     vector: embedding.data[0].embedding,
   })
 
-  let resultString = '\n\nReturned results from vector db (done automatically): '
-results.matches.forEach((match) => {
-  resultString += `\n
- 
-  Professor: ${match.id}
-  Review: ${match.metadata.stars}
-  Subject: ${match.metadata.subject}
-  Stars: ${match.metadata.stars}
-  \n\n`
-})
+  let resultString = ''
+  results.matches.forEach((match) => {
+    resultString += `
+    Returned Results:
+    Professor: ${match.id}
+    Review: ${match.metadata.stars}
+    Subject: ${match.metadata.subject}
+    Stars: ${match.metadata.stars}
+    \n\n`
+  })
 const lastMessage = data[data.length - 1]
 const lastMessageContent = lastMessage.content + resultString
 const lastDataWithoutLastMessage = data.slice(0, data.length - 1)
@@ -84,3 +76,6 @@ const completion = await openai.chat.completions.create({
   return new NextResponse(stream)
 
   }
+
+
+

@@ -1,10 +1,10 @@
-'use client'
-import { Box, Button, Stack, TextField } from '@mui/material'
+'use client';
+import { Box, Button, Stack, TextField, useTheme } from '@mui/material'
 import { useState } from 'react'
-import Image from "next/image";
-
+import ReactMarkdown from 'react-markdown'
 
 export default function Home() {
+  const theme = useTheme();
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
@@ -12,42 +12,50 @@ export default function Home() {
     },
   ])
   const [message, setMessage] = useState('')
+  
   const sendMessage = async () => {
     setMessage('')
     setMessages((messages) => [
       ...messages,
-      {role: 'user', content: message},
-      {role: 'assistant', content: ''},
+      { role: 'user', content: message },
+      { role: 'assistant', content: '' },
     ])
-  
+
     const response = fetch('/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify([...messages, {role: 'user', content: message}]),
+      body: JSON.stringify([...messages, { role: 'user', content: message }]),
     }).then(async (res) => {
       const reader = res.body.getReader()
       const decoder = new TextDecoder()
       let result = ''
-  
-      return reader.read().then(function processText({done, value}) {
+
+      return reader.read().then(function processText({ done, value }) {
         if (done) {
           return result
         }
-        const text = decoder.decode(value || new Uint8Array(), {stream: true})
+        const text = decoder.decode(value || new Uint8Array(), { stream: true })
         setMessages((messages) => {
           let lastMessage = messages[messages.length - 1]
           let otherMessages = messages.slice(0, messages.length - 1)
           return [
             ...otherMessages,
-            {...lastMessage, content: lastMessage.content + text},
+            { ...lastMessage, content: lastMessage.content + text },
           ]
         })
         return reader.read().then(processText)
       })
     })
   }
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) { // Check if Enter is pressed without Shift
+      event.preventDefault(); // Prevent default behavior (new line)
+      sendMessage();
+    }
+  }
+
   return (
     <Box
       width="100vw"
@@ -56,14 +64,24 @@ export default function Home() {
       flexDirection="column"
       justifyContent="center"
       alignItems="center"
+      // bgcolor={theme.palette.background.default}
+      sx={{
+        backgroundImage: `url('pexels-photo-1007025.webp')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
     >
       <Stack
         direction={'column'}
         width="500px"
         height="700px"
-        border="1px solid black"
+        border={`1px solid ${theme.palette.divider}`}
+        borderRadius={theme.shape.borderRadius}
+        boxShadow={3}
         p={2}
         spacing={3}
+       
+        bgcolor={theme.palette.background.paper}
       >
         <Stack
           direction={'column'}
@@ -83,14 +101,17 @@ export default function Home() {
               <Box
                 bgcolor={
                   message.role === 'assistant'
-                    ? 'primary.main'
-                    : 'secondary.main'
+                    ? theme.palette.primary.main
+                    : theme.palette.secondary.main
                 }
                 color="white"
                 borderRadius={16}
                 p={3}
+                boxShadow={2}
               >
-                {message.content}
+                <ReactMarkdown>
+                  {message.content}
+                </ReactMarkdown>
               </Box>
             </Box>
           ))}
@@ -101,6 +122,8 @@ export default function Home() {
             fullWidth
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown}
+            variant="outlined"
           />
           <Button variant="contained" onClick={sendMessage}>
             Send
