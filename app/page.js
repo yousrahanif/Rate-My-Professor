@@ -333,13 +333,14 @@ export default function Home() {
               <Box
                 bgcolor={
                   message.role === 'assistant'
-                    ? theme.palette.primary.main
-                    : theme.palette.secondary.main
+                    ? '#FFEBEE'  // Light pink color for assistant's messages
+                    : '#FCE4EC'  // Slightly darker pink color for user's messages
                 }
-                color="white"
+                color="black"
                 borderRadius={16}
                 p={3}
                 boxShadow={2}
+                maxWidth="80%"
               >
                 <ReactMarkdown>{message.content}</ReactMarkdown>
               </Box>
@@ -355,7 +356,9 @@ export default function Home() {
             onKeyDown={handleKeyDown}
             variant="outlined"
           />
-          <Button variant="contained" onClick={sendMessage}>
+          <Button variant="contained" onClick={sendMessage}
+          sx={{ backgroundColor: '#FFB6C1', '&:hover': { backgroundColor: '#FF69B4' } }} // Light pink button
+          >
           Fetch from Database
           </Button>
         </Stack>
@@ -367,7 +370,9 @@ export default function Home() {
             onChange={(e) => setProfessorLink(e.target.value)}
             variant="outlined"
           />
-          <Button variant="contained" onClick={handleSubmitLink}>
+          <Button variant="contained" onClick={handleSubmitLink}
+           sx={{ backgroundColor: '#FFB6C1', '&:hover': { backgroundColor: '#FF69B4' } }} 
+          >
           Get Online Summary
           </Button>
         </Stack>
