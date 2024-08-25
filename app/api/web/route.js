@@ -109,6 +109,7 @@ export async function POST(req) {
     const rating = $('div.RatingValue__Numerator-qw8sqy-2').first().text().trim();
     const difficulty = $('div.FeedbackItem__FeedbackNumber-uof32n-1').last().text().trim();
 
+    // Return the response without including the URL
     return NextResponse.json({
       success: true,
       details: {
@@ -117,7 +118,6 @@ export async function POST(req) {
         school: school || 'School not available',
         rating: rating || 'Rating not available',
         difficulty: difficulty || 'Difficulty not available',
-        url: url
       },
     });
   } catch (error) {
@@ -125,3 +125,4 @@ export async function POST(req) {
     return NextResponse.json({ error: 'Failed to scrape professor data.' });
   }
 }
+

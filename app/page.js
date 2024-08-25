@@ -269,8 +269,8 @@ export default function Home() {
                 `**School:** ${result.details.school}`,
                 `**Rating:** ${result.details.rating}`,
                 `**Difficulty:** ${result.details.difficulty}`,
-                `**URL:** ${result.details.url}`,
-              ].join('\n'),
+                
+              ].join('\n\n'),
             },
           ]);
         } else {
