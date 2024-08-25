@@ -1,0 +1,124 @@
+{
+    "reviews":[
+    {
+        "professor": "Dr. John Smith",
+        "subject": "Computer Science",
+        "stars": 4,
+        "review": "Dr. Smith is very knowledgeable and engaging. His lectures are well-organized, but he can be a bit strict on deadlines."
+    },
+    {
+        "professor": "Prof. Emily Davis",
+        "subject": "Mathematics",
+        "stars": 5,
+        "review": "Prof. Davis is amazing! She explains concepts clearly and is always available for extra help."
+    },
+    {
+        "professor": "Dr. Michael Brown",
+        "subject": "Physics",
+        "stars": 3,
+        "review": "Dr. Brown is decent, but his lectures can be a bit dry. You have to put in extra effort to do well."
+    },
+    {
+        "professor": "Prof. Sarah Johnson",
+        "subject": "History",
+        "stars": 5,
+        "review": "Prof. Johnson is fantastic! Her classes are interactive, and she really cares about her students."
+    },
+    {
+        "professor": "Dr. William Lee",
+        "subject": "Biology",
+        "stars": 2,
+        "review": "Dr. Lee's classes are difficult to follow, and he is not very approachable during office hours."
+    },
+    {
+        "professor": "Prof. Jessica Taylor",
+        "subject": "Chemistry",
+        "stars": 4,
+        "review": "Prof. Taylor is a great lecturer, but the workload is heavy. Make sure to stay on top of the readings."
+    },
+    {
+        "professor": "Dr. Christopher Martinez",
+        "subject": "Economics",
+        "stars": 3,
+        "review": "Dr. Martinez knows his stuff, but his grading is tough. Participation is key in his classes."
+    },
+    {
+        "professor": "Prof. Karen Wilson",
+        "subject": "Literature",
+        "stars": 5,
+        "review": "Prof. Wilson is the best! She makes difficult topics easy to understand and is very supportive."
+    },
+    {
+        "professor": "Dr. James Anderson",
+        "subject": "Engineering",
+        "stars": 2,
+        "review": "Dr. Anderson is very knowledgeable, but his teaching style is hard to follow. Exams are challenging."
+    },
+    {
+        "professor": "Prof. Mary Thomas",
+        "subject": "Philosophy",
+        "stars": 4,
+        "review": "Prof. Thomas is a great professor, but the assignments can be overwhelming at times."
+    },
+    {
+        "professor": "Dr. Robert White",
+        "subject": "Statistics",
+        "stars": 5,
+        "review": "Dr. White is an excellent teacher. He makes the subject interesting and is always willing to help."
+    },
+    {
+        "professor": "Prof. Linda Harris",
+        "subject": "Art",
+        "stars": 3,
+        "review": "Prof. Harris is good, but her lectures can be a bit monotonous. The material is interesting, though."
+    },
+    {
+        "professor": "Dr. Paul Clark",
+        "subject": "Political Science",
+        "stars": 1,
+        "review": "Dr. Clark is very disorganized, and his exams are unfair. I would not recommend taking his class."
+    },
+    {
+        "professor": "Prof. Patricia Rodriguez",
+        "subject": "Psychology",
+        "stars": 4,
+        "review": "Prof. Rodriguez is very passionate about her subject. The class is challenging, but you learn a lot."
+    },
+    {
+        "professor": "Dr. Mark Lewis",
+        "subject": "Sociology",
+        "stars": 5,
+        "review": "Dr. Lewis is one of the best professors I’ve had. He’s approachable, and his lectures are very engaging."
+    },
+    {
+        "professor": "Prof. Barbara Walker",
+        "subject": "Music",
+        "stars": 2,
+        "review": "Prof. Walker is tough. The workload is heavy, and her grading is harsh."
+    },
+    {
+        "professor": "Dr. Steven Hall",
+        "subject": "Geology",
+        "stars": 4,
+        "review": "Dr. Hall is a great professor, but his exams are difficult. Make sure to attend his office hours."
+    },
+    {
+        "professor": "Prof. Elizabeth Allen",
+        "subject": "Theater",
+        "stars": 3,
+        "review": "Prof. Allen is okay, but her lectures are not very engaging. The material is interesting, though."
+    },
+    {
+        "professor": "Dr. David King",
+        "subject": "Astronomy",
+        "stars": 5,
+        "review": "Dr. King is an amazing professor! His lectures are clear, and he genuinely cares about his students' success."
+    },
+    {
+        "professor": "Prof. Susan Wright",
+        "subject": "Engineering",
+        "stars": 4,
+        "review": "Prof. Wright is very knowledgeable and approachable. Her classes are well-structured, but the exams are tough."
+    }
+]
+}
